@@ -1,4 +1,4 @@
-import { Navbar,HotelCard } from "../../Components"
+import { Navbar,HotelCard,Categories } from "../../Components"
 import { useEffect } from "react"
 import "./Home.css"
 import axios from "axios"
@@ -47,6 +47,7 @@ export const Home = () =>{
     return (
         <>
             <Navbar/>
+            <Categories/>
            
               {
                     hotels && hotels.length>0 ? (
