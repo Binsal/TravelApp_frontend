@@ -4,6 +4,7 @@ import "./Home.css"
 import axios from "axios"
 import { useState } from "react"
 import InfiniteScroll from "react-infinite-scroll-component"
+import { useCategory } from "../../context"
 
 
 export const Home = () =>{
@@ -12,12 +13,15 @@ export const Home = () =>{
     const [currentIndex,setCurrentIndex] = useState(16);
     const [testData,setTestData] = useState([]);
     const [hotels,setHotels] = useState([]);
+    const {hotelCategory} = useCategory();
 
     useEffect(()=>{
         (async()=>{
 
             try{
-                const {data} = await axios.get("https://travelapp-kp6a.onrender.com/api/hotels");
+                const {data} = await axios.get(
+                    `https://travelapp-kp6a.onrender.com/api/hotels?category=${hotelCategory}`
+                );
                 setTestData(data);
                 setHotels(data?data.slice(0,16):[]);
             }
@@ -26,7 +30,7 @@ export const Home = () =>{
             }
 
         })()
-    },[]);
+    },[hotelCategory]);
 
     const fetchMoreData = () =>{
         if(hotels.length >= testData.length){

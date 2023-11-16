@@ -1,15 +1,20 @@
 @import url(http://fonts.googleapis.com/css?family=Alfa+Slab+One);
 
 .categories{
-    padding: 6rem 2rem 1rem 2rem;
+    padding: 6rem 2rem 1rem 7rem;
     color:var(--text-color-primary);
+    background-color: var(--background-color);
     position: fixed;
     z-index: 1;
     width: 100vw;
 }
 
 .gap-large{
-    gap:2rem;
+    gap:4rem;
+}
+
+.border-bottom{
+    border-bottom:1px solid var(--text-color-primary);
 }
 
 .button.btn-category{
@@ -23,9 +28,9 @@
 }
 
 .btn-left{
-    left:2rem;
+    left:0.300rem;
 }
 
 .btn-right{
-    right: 7rem;
+    right: 0.500rem;
 }
