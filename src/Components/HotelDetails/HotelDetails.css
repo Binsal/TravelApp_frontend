@@ -1,4 +1,8 @@
-.gap-small {
+ *{
+  padding-bottom: 4px;
+ }
+
+ .gap-small {
     gap: 8px;
   }
   
@@ -43,9 +47,12 @@
   }
   
   .amenities {
+    padding-top:22px;
     padding-bottom: 1rem;
   }
   
   .amenities-container .span {
-    padding: 0.5rem 0;
+    padding: 0.5rem 1rem;
   }
+
+  

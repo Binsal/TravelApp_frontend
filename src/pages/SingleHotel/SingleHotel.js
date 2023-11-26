@@ -1,7 +1,7 @@
 import {useState,useEffect} from 'react';
 import {useParams} from "react-router-dom";
 import axios from "axios";
-import { HotelDetails, Navbar } from '../../Components';
+import { HotelDetails, Navbar,FinalPrice } from '../../Components';
 import { HotelImages } from '../../Components';
 import "./SingleHotel.css";
 
@@ -32,8 +32,9 @@ export const SingleHotel = () =>{
           <main className='single-hotel-page'>
             <p className='hotel-name-add'>{name},{country}</p>
             <HotelImages singleHotel={singleHotel}/>
-            <div>
+            <div className='d-flex'>
                 <HotelDetails singleHotel={singleHotel}/>
+                <FinalPrice singleHotel={singleHotel}/>
             </div>
           </main>
         </>
