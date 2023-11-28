@@ -1,17 +1,17 @@
 @import url(http://fonts.googleapis.com/css?family=Alfa+Slab+One);
 
-.categories{
-    padding: 6rem 2rem 1rem 7rem;
-    color:var(--text-color-primary);
+.categories {
+    padding: 6rem 3rem 3rem 7rem;
+    color: var(--text-color-primary);
     background-color: var(--background-color);
     position: fixed;
     z-index: 1;
     width: 100vw;
-}
-
-.gap-large{
-    gap:4rem;
-}
+  }
+  
+  .gap-large {
+    gap: 2rem;
+  }
 
 .border-bottom{
     border-bottom:1px solid var(--text-color-primary);
@@ -28,9 +28,22 @@
 }
 
 .btn-left{
-    left:0.300rem;
+    left:3rem;
 }
 
 .btn-right{
-    right: 0.500rem;
+    right: 9rem;
+}
+
+.button.btn-filter{
+    top:5.5rem;
+    right:0.5rem;
+    padding:8px 1rem;
+    border-radius: 2rem;
+    border:1px solid var(--accent-color);
+}
+
+.btn-filter:hover,
+.btn-catergory:hover{
+    box-shadow: 1px 1px 4px 2px rgba(0,0,0,0.1);
 }
