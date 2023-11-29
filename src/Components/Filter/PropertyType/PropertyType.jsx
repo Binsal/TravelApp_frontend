@@ -1,5 +1,5 @@
 import { v4 as uuid } from "uuid";
-
+import {useFilter} from "../../../context"
 
 const propertyTypes = [
   { id: uuid(), type: "House" },
@@ -9,7 +9,15 @@ const propertyTypes = [
 ];
 
 export const PropertyType = () => {
- 
+  
+  const {propertyType,filterDispatch} = useFilter();
+
+  const handlePropertyClick = (property) =>{
+      filterDispatch({
+        type:"PROPERTY_TYPE",
+        payload:property,
+      });
+  };
 
   return (
     <div className="filter-container">
@@ -17,8 +25,11 @@ export const PropertyType = () => {
       <div className="d-flex gap-larger">
         {propertyTypes.map(({ id, type }) => (
           <span
-            className="span-label property-type cursor-pointer align-center justify-center on-hover"
+              className={`span-label property-type cursor-pointer align-center justify-center on-hover ${
+                propertyType === type ? "selected" : ""
+              }`}
               key={id}
+              onClick={() => handlePropertyClick(type)}
              >
              {type}
           </span>

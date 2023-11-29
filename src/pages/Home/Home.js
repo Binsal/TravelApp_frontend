@@ -5,7 +5,7 @@ import axios from "axios"
 import { useState } from "react"
 import InfiniteScroll from "react-infinite-scroll-component"
 import { useCategory,useDate,useFilter } from "../../context"
-import { getHotelsByPrice,getHotelsByRoomsAndBeds } from "../../utils"
+import { getHotelsByPrice,getHotelsByRoomsAndBeds,getHotelsByPropertyType,getHotelsByRatings,getHotelsByCancelation } from "../../utils"
 
 export const Home = () =>{
 
@@ -15,7 +15,7 @@ export const Home = () =>{
     const [hotels,setHotels] = useState([]);
     const {hotelCategory} = useCategory();
     const {isSearchModalOpen} = useDate();
-    const {isFilterModalOpen,priceRange, noOfBathrooms, noOfBedrooms, noOfBeds} = useFilter();
+    const {isFilterModalOpen,priceRange, noOfBathrooms, noOfBedrooms, noOfBeds,propertyType,traveloRating,isCancelable} = useFilter();
 
     useEffect(()=>{
         (async()=>{
@@ -52,6 +52,9 @@ export const Home = () =>{
 
     const filteredHotelsByPrice = getHotelsByPrice(hotels,priceRange);
     const filteredHotelsByRoomsAndBeds = getHotelsByRoomsAndBeds(filteredHotelsByPrice, noOfBathrooms, noOfBedrooms, noOfBeds);
+    const filteredHotelsByPropertyType = getHotelsByPropertyType(filteredHotelsByRoomsAndBeds,propertyType);
+    const filteredHotelsByRatings = getHotelsByRatings(filteredHotelsByPropertyType,traveloRating);
+    const filteredHotelsByCancelation = getHotelsByCancelation(filteredHotelsByRatings,isCancelable);
 
     return (
         <div className="relative">
@@ -69,7 +72,7 @@ export const Home = () =>{
                         >
                         <main className="main d-flex align-center wrap gap-larger">
                         {
-                            filteredHotelsByRoomsAndBeds && filteredHotelsByRoomsAndBeds.map(hotel => <HotelCard key = {hotel._id} hotel={hotel} />)
+                            filteredHotelsByCancelation  &&  filteredHotelsByCancelation.map(hotel => <HotelCard key = {hotel._id} hotel={hotel} />)
                         }
                     </main>
                     </InfiniteScroll>
